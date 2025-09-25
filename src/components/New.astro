@@ -1,0 +1,32 @@
+---
+type NewsProps = {
+    title: string;
+    description: string;
+}
+const News:NewsProps[] =[
+    {
+        title: "Hydrogen VS Electric Cars",
+        description: "Will hydrogen-fueled cars ever catch up to EVs?"
+    },
+    {
+        title: "The Downsides of AI Artistry",
+        description: "What are the possible adverse effects of on-demand AI image generation?"
+    },
+    {
+        title: "Is VC Funding Drying Up?",
+        description: "Private funding by VC firms is down 50% YOY. We take a look at what that means."
+    }
+]
+---
+<section class="mt-16 bg-Very-dark-blue p-4 mb-16 ">
+    <h1 class="font-extrabold text-[2rem] mb-6 text-Soft-orange">New</h1>
+    {
+        News.map((newsItem) => (
+            <article class="border-b border-Greyish-blue/40 py-8  last:border-0 last:mb-0 last:pb-0 text-Off-white">
+                <a href="#" class="text-xl font-extrabold hover:text-Soft-orange cursor-pointer mb-2 inline-block">{newsItem.title}</a>
+                <p class="text-Dark-grayish-blue text-[14.9984px]">{newsItem.description}</p>
+            </article>
+        ))
+    }
+</section>
+

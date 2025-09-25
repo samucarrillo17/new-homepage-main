@@ -1,0 +1,49 @@
+---
+import imgRetro from '../assets/images/image-retro-pcs.jpg';
+import imgLaptops from '../assets/images/image-top-laptops.jpg';
+import imgGaming from '../assets/images/image-gaming-growth.jpg';
+import Image from 'astro/components/Image.astro';
+
+type ArticleProps = {
+    number: string,
+    title: string,
+    description: string,
+    imgSrc: ImageMetadata, 
+}
+
+const Article: ArticleProps[] = [
+    {
+        number: "01",
+        title: "Reviving Retro PCs",
+        description: "What happens when old PCs are given modern upgrades?",
+        imgSrc: imgRetro,
+    },
+    {
+        number: "02",
+        title: "Top 10 Laptops of 2022",
+        description: "Our best picks for various needs and budgets.",
+        imgSrc: imgLaptops
+    },
+    {
+        number: "03",
+        title: "The Growth of Gaming",
+        description: "How the pandemic has sparked fresh opportunities.",
+        imgSrc: imgGaming
+
+    }
+]
+---
+<section>
+        {Article.map((article) => (
+            <article class="flex gap-8 mb-8">
+                <Image src={article.imgSrc} alt={article.title} class="w-[100px]"/>
+                <div class="space-y-2 flex flex-col">
+                    <span class="text-[2rem] font-bold text-Soft-red">{article.number}</span>
+
+                    <a href="#" class="font-bold text-lg cursor-pointer hover:text-Soft-red ">{article.title}</a>
+
+                    <p class="text-Dark-grayish-blue text-sm">{article.description}</p>
+                </div>
+            </article>
+        ))}
+</section>
