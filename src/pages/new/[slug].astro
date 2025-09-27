@@ -38,7 +38,7 @@ const { article } = Astro.props;
       <a 
         href="/" 
         class="hover:text-Very-dark-blue flex cursor-pointer items-center gap-1 transition-colors"
-        data-astro-prefetch
+        id="goBack"
       >
         <ArrowLeft class="size-5" />
         Atrás
@@ -46,3 +46,12 @@ const { article } = Astro.props;
     </div>
   </div>
 </Layout>
+
+<script>
+    document.addEventListener('astro:page-load',()=>{
+        const backbtn = document.querySelector("#goBack")
+        backbtn?.addEventListener('click', ()=>{
+            history.back()
+        })
+    })
+</script>
