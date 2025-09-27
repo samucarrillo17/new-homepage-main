@@ -33,10 +33,10 @@ const Article: ArticleProps[] = [
     }
 ]
 ---
-<section>
+<section class="lg:flex lg:gap-8">
         {Article.map((article) => (
             <article class="flex gap-8 mb-8">
-                <Image src={article.imgSrc} alt={article.title} class="w-[100px]"/>
+                <Image src={article.imgSrc} alt={article.title} class="w-[100px] xl:w-[120px]"/>
                 <div class="space-y-2 flex flex-col">
                     <span class="text-[2rem] font-bold text-Soft-red">{article.number}</span>
 

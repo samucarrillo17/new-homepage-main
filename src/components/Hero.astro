@@ -1,15 +1,27 @@
 ---
 import Image from "astro/components/Image.astro"
 import mobileImg from "../assets/images/image-web-3-mobile.jpg"
+import desktopImg from "../assets/images/image-web-3-desktop.jpg"
+type Props = {
+    styles?:string
+}
+
+const {styles} = Astro.props
 ---
 
-<haeader >
-    <Image src={mobileImg} alt="HeroImage" class="mb-8"/>
+<haeader class={`${styles}`} >
+    <div class="mb-6 xl:mb-10">
+        <Image src={mobileImg} alt="HeroImage" class=" block md:hidden" />
+        <Image src={desktopImg} alt="HeroImage" class=" hidden sm:block" />
 
-    <h1 class="text-[2.5rem]/10 font-extrabold">The Bright Future of Web 3.0?</h1>
-
-    <p class="text-Dark-grayish-blue text-[.9374rem] mb-6">We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
-    But is it really fulfilling its promise?</p>
-
-    <button class="bg-Soft-red uppercase px-8 py-3 font-bold cursor-pointer hover:bg-Soft-red/90 text-Off-white">Read more</button>
+    </div>
+    <div class="flex flex-col items-start xl:flex-row ">
+        <h1 class="text-[2.5rem]/10 font-extrabold xl:text-[3.5rem]/14 xl:flex-1">The Bright Future of Web 3.0?</h1>
+        <div class="xl:flex-1">
+            <p class="text-Dark-grayish-blue text-[.9374rem] mb-6">We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
+            But is it really fulfilling its promise?</p>
+        
+            <button class="bg-Soft-red uppercase px-8 py-3 font-bold cursor-pointer hover:bg-Soft-red/90 text-Off-white mb-16 xl:mb-0">Read more</button>
+        </div>
+    </div>
 </haeader>

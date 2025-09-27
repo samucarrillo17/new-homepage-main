@@ -6,8 +6,9 @@ import Articles from "../components/Articles.astro"
 ---
 
 <Layout>
-	<Hero/>
-	
-	<New/>
+	<div class="flex flex-col lg:flex-row lg:gap-6">
+		<Hero styles="flex-2"/>
+		<New styles="flex-1"/>
+	</div>
 	<Articles/>
 </Layout>

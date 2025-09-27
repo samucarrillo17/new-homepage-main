@@ -2,45 +2,23 @@
 import Logo from "../assets/images/logo.svg"
 import Menu from "../assets/images/icon-menu.svg"
 import Close from "../assets/images/icon-menu-close.svg"
+import NavbarItems from "./NavbarItems.astro"
 
 
-type NavItem = {
-    name: string
-    href: string
-}
-const navItems:NavItem[] = [
-    { name: "Home", href: "/" },
-    { name: "New", href: "/new" },
-    { name: "Popular", href: "/popular" },
-    { name: "Trending", href: "/trending" },
-    { name: "Categories", href: "/categories" },
-]
 
 ---
 
 <nav class="mb-6 flex justify-between items-center ">
     
     <Logo/>
-    <Menu id="menu-btn" class="cursor-pointer"/>
+    <NavbarItems isHorizontal={true}/>
+    <Menu id="menu-btn" class="cursor-pointer lg:hidden"/>
+
     <div id="menu-modal" class="bg-black/50 fixed inset-0 hidden">
         <div class="bg-Off-white absolute right-0 h-screen flex flex-col items-end px-[21px] py-[27px]" >
             
             <Close id="close-btn" class="cursor-pointer"/>
-            <ul class="flex flex-col w-64 gap-6 mt-[88px]">
-                {navItems.map((item:NavItem) => (
-                        <li class="list-none">
-
-                            <a
-                            href={item.href}
-                            class=" text-lg cursor-pointer hover:text-Soft-orange"
-                            id="itemsNav"
-                            >{item.name}
-                            </a>
-
-                        </li>
-                    ))}
             
-            </ul>
         </div>
     </div>
 </nav>
