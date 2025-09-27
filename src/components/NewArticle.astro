@@ -1,0 +1,21 @@
+---
+type Props = {
+    slug:string,
+    title:string,
+    description:string
+}
+const {title,slug,description} = Astro.props
+
+---
+
+<article
+  class="border-b border-Greyish-blue/40 py-8 last:border-0 last:mb-0 last:pb-0 xl:py-7"
+>
+  <a
+    href={`/new/${slug}`}
+    class="text-xl font-extrabold hover:text-Soft-orange cursor-pointer mb-2 inline-block"
+   transition:name={title}
+    >{title}</a
+  >
+  <p class="text-Dark-grayish-blue text-[14.9984px]">{description}</p>
+</article>

@@ -3,41 +3,64 @@ import Logo from "../assets/images/logo.svg"
 import Menu from "../assets/images/icon-menu.svg"
 import Close from "../assets/images/icon-menu-close.svg"
 import NavbarItems from "./NavbarItems.astro"
-
-
-
 ---
 
-<nav class="mb-6 flex justify-between items-center ">
-    
-    <Logo/>
+<nav class="mb-6 flex justify-between items-center">
+    <a href="/"><Logo/></a>
     <NavbarItems isHorizontal={true}/>
     <Menu id="menu-btn" class="cursor-pointer lg:hidden"/>
 
-    <div id="menu-modal" class="bg-black/50 fixed inset-0 hidden">
-        <div class="bg-Off-white absolute right-0 h-screen flex flex-col items-end px-[21px] py-[27px]" >
-            
-            <Close id="close-btn" class="cursor-pointer"/>
-            
+    <!-- Modal del menú mobile -->
+    <div id="menu-modal" class="bg-black/50 fixed inset-0 hidden z-50">
+        <div class="bg-Off-white absolute right-0 top-0 h-screen flex flex-col items-end px-[21px] py-[27px] w-64 shadow-lg">
+            <Close id="close-btn" class="cursor-pointer mb-4"/>
+            <NavbarItems/>
         </div>
     </div>
 </nav>
+
 <script>
-    const menuBtn = document.getElementById("menu-btn");
-    const closeBtn = document.getElementById("close-btn");
-    const menuModal = document.getElementById("menu-modal")
-    const itemsNav = document.querySelectorAll("#itemsNav");
+    // Función para manejar el menú
+    function setupMobileMenu() {
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+        const menuModal = document.getElementById("menu-modal");
+        const itemsNav = document.querySelectorAll(".nav-item"); // Cambio aquí
 
-     menuBtn?.addEventListener("click", () => {
-        menuModal?.classList.remove("hidden");
-    });
-    closeBtn?.addEventListener("click", () => {
-        menuModal?.classList.add("hidden");
-    });
-    itemsNav.forEach((item) => {
-        item.addEventListener("click", () => {
-            menuModal?.classList.add("hidden");
+        // Abrir menú
+        menuBtn?.addEventListener("click", () => {
+            console.log("Menu clicked"); // Para debug
+            menuModal?.classList.remove("hidden");
+            document.body.style.overflow = 'hidden'; // Evita scroll
         });
-    });
 
+        // Cerrar menú
+        closeBtn?.addEventListener("click", () => {
+            console.log("Close clicked"); // Para debug
+            menuModal?.classList.add("hidden");
+            document.body.style.overflow = 'auto';
+        });
+
+        // Cerrar al hacer click en el overlay
+        menuModal?.addEventListener("click", (e) => {
+            if (e.target === menuModal) {
+                menuModal.classList.add("hidden");
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Cerrar menú al hacer click en cualquier enlace
+        itemsNav.forEach((item) => {
+            item.addEventListener("click", () => {
+                menuModal?.classList.add("hidden");
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
+
+    // Ejecutar al cargar la página
+    document.addEventListener('DOMContentLoaded', setupMobileMenu);
+    
+    // Para Astro con View Transitions
+    document.addEventListener('astro:page-load', setupMobileMenu);
 </script>

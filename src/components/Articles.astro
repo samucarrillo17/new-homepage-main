@@ -2,7 +2,7 @@
 import imgRetro from '../assets/images/image-retro-pcs.jpg';
 import imgLaptops from '../assets/images/image-top-laptops.jpg';
 import imgGaming from '../assets/images/image-gaming-growth.jpg';
-import Image from 'astro/components/Image.astro';
+import { Image } from 'astro:assets';
 
 type ArticleProps = {
     number: string,
@@ -36,11 +36,11 @@ const Article: ArticleProps[] = [
 <section class="lg:flex lg:gap-8">
         {Article.map((article) => (
             <article class="flex gap-8 mb-8">
-                <Image src={article.imgSrc} alt={article.title} class="w-[100px] xl:w-[120px]"/>
+                <Image src={article.imgSrc} format="webp" loading="eager" alt={article.title} class="w-[100px] xl:w-[120px]"/>
                 <div class="space-y-2 flex flex-col">
                     <span class="text-[2rem] font-bold text-Soft-red">{article.number}</span>
 
-                    <a href="#" class="font-bold text-lg cursor-pointer hover:text-Soft-red ">{article.title}</a>
+                    <a href="/" class="font-bold text-lg cursor-pointer hover:text-Soft-red ">{article.title}</a>
 
                     <p class="text-Dark-grayish-blue text-sm">{article.description}</p>
                 </div>

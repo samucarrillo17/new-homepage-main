@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro"
 import "../styles/global.css"
+import { ClientRouter } from "astro:transitions"
 ---
 
 <html lang="en">
@@ -9,12 +10,24 @@ import "../styles/global.css"
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<ClientRouter/>
 		<title>Astro</title>
+		
 	</head>
 	<body class="flex flex-col items-center font-Inter ">
 		<main class="p-6 xl:w-[1112px]" >
 			<Navbar />
 			<slot />
+
+			<script>
+				// Solo corre si el navegador soporta la API
+				if ("startViewTransition" in document) {
+				// Antes de que Astro prepare el swap
+				document.addEventListener("astro:before-preparation", () => {
+				document.startViewTransition();
+        	});
+      }
+    </script>
 		</main>
 	</body>
 </html>
