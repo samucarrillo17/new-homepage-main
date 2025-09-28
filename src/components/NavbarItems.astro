@@ -19,7 +19,7 @@ type Props = {
 const { isHorizontal = false } = Astro.props
 ---
  
-<ul class={`gap-6 ${isHorizontal ? "flex-row mt-0 hidden lg:flex" : "flex-col mt-[88px] w-64"}`}>
+<ul class={`gap-6 ${isHorizontal ? "flex-row mt-0 hidden lg:flex" : "flex-col mt-[88px] w-50"}`}>
     {navItems.map((item: NavItem) => (
         <li class="list-none">
             <a

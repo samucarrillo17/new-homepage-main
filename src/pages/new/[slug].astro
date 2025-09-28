@@ -4,10 +4,9 @@ import { News, type NewsProps } from "../../common/article";
 import { ArrowLeft } from "@lucide/astro";
 
 export async function getStaticPaths() {
-  // Pasar el artículo completo en props para evitar filtrado
   return News.map(item => ({
     params: { slug: item.slug },
-    props: { article: item } // ← Clave para el rendimiento
+    props: { article: item } 
   }));
 }
 
@@ -15,11 +14,11 @@ interface Props {
   article: NewsProps;
 }
 
-// Recibir directamente el artículo desde props
+
 const { article } = Astro.props;
 ---
 
-<Layout>
+<Layout pageTitle={article.title}>
   <div class="space-y-4 flex flex-col">
     <h1 
       class="text-3xl font-bold" 
@@ -33,11 +32,11 @@ const { article } = Astro.props;
     <p class="text-lg">
       {article.content}
     </p>
-    <div class="flex justify-end text-Grayish-blue">
+    <div class="flex justify-end text-Grayish-blue ">
       <!-- Navegación directa sin JavaScript -->
       <a 
         href="/" 
-        class="hover:text-Very-dark-blue flex cursor-pointer items-center gap-1 transition-colors"
+        class="hover:text-Very-dark-blue flex cursor-pointer items-center gap-1 transition-colors border border-grayish-blue px-2 py-1 rounded-full"
         id="goBack"
       >
         <ArrowLeft class="size-5" />
