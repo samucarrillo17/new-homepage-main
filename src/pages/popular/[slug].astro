@@ -1,0 +1,60 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Newspopular, type PopularProps } from "../../common/popularArticles";
+import { ArrowLeft } from "@lucide/astro";
+import Image from "astro/components/Image.astro";
+
+export async function getStaticPaths() {
+  return Newspopular.map(item => ({
+    params: { slug: item.slug },
+    props: { article: item } 
+  }));
+}
+
+interface Props {
+  article: PopularProps;
+}
+
+
+const { article } = Astro.props;
+---
+
+<Layout pageTitle={article.title}>
+  <div class="flex justify-center">
+    <Image src={article.image} format="webp" loading="eager" alt={article.title} class="w-full mb-6"/>
+
+  </div>
+  <div class="space-y-4 flex flex-col">
+    <h1 
+      class="text-3xl font-bold" 
+      transition:name={article.title}
+    >
+      {article.title}
+    </h1>
+    <p class="text-md text-Grayish-blue italic">
+      {article.description}
+    </p>
+    <p class="text-lg">
+      {article.content}
+    </p>
+    <div class="flex justify-end text-Grayish-blue ">
+      <a 
+        href="/" 
+        class="hover:text-Very-dark-blue flex cursor-pointer items-center gap-1 transition-colors border border-grayish-blue px-2 py-1 rounded-full"
+        id="goBack"
+      >
+        <ArrowLeft class="size-5" />
+        Atrás
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+    document.addEventListener('astro:page-load',()=>{
+        const backbtn = document.querySelector("#goBack")
+        backbtn?.addEventListener('click', ()=>{
+            history.back()
+        })
+    })
+</script>

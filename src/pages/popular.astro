@@ -1,8 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import NotFound from "../components/notFound.astro"
+import PopularNews from "../components/PopularNews.astro"
+import { Newspopular } from "../common/popularArticles"
 ---
 <Layout pageTitle="Popular Articles">
-    <NotFound/>
+    <section class="flex flex-col">
+        {
+            Newspopular.map(popular =><PopularNews {...popular}/>)
+        }
+
+    </section>
 </Layout>
 
