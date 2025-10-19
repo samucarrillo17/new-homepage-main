@@ -12,7 +12,7 @@ La aplicación incluye las siguientes pestañas funcionales con contenido visibl
 * **Home**
 * **New**
 * **Popular**
-* *Trending* y *Categories* están en proceso de desarrollo actualmente, enfocando el desarrollo en las secciones principales. Cabe resaltar que el desafio solo abordaba la opcion "Home" las otras opciones del menu he ido desarrollandolas por mi cuenta para asi tener un sitio web mas completo.
+* *Trending* y *Categories* están en proceso de desarrollo actualmente. Cabe resaltar que el desafio solo abordaba la opcion "Home" las otras opciones del menu he ido desarrollandolas por mi cuenta para asi tener un sitio web mas completo.
 
 ### 💡 Características Destacadas
 
@@ -38,4 +38,4 @@ Puedes ver e interactuar con el proyecto desplegado en el siguiente enlace:
 ## 👤 Autor
 
 * **Samuel Carrillo** - [@samucarrillo17](https://github.com/TuHandleDeGitHub)
-* **Frontend Mentor Profile** - [Tu Perfil de FM](https://www.frontendmentor.io/profile/samucarrillo17)
+* **Frontend Mentor Profile** - [samucarrillo17](https://www.frontendmentor.io/profile/samucarrillo17)
